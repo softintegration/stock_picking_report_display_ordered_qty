@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template inherit_id="stock.report_delivery_document" id="report_delivery_document_inherited">
+        <xpath expr="//table[@name='stock_move_table']/thead/tr/th[@name='th_sm_ordered']" position="attributes">
+            <attribute name="t-if">o.picking_type_id.report_display_ordered_qty</attribute>
+        </xpath>
+        <xpath expr="//table[@name='stock_move_table']/tbody/tr/td[2]" position="attributes">
+            <attribute name="t-if">o.picking_type_id.report_display_ordered_qty</attribute>
+        </xpath>
+        <xpath expr="//table[@name='stock_move_line_table']/thead/tr/th[@name='th_sml_qty_ordered']" position="attributes">
+            <attribute name="t-if">not has_serial_number and o.picking_type_id.report_display_ordered_qty</attribute>
+        </xpath>
+    </template>
+
+    <template inherit_id="stock.stock_report_delivery_aggregated_move_lines" id="stock_report_delivery_aggregated_move_lines_inherited">
+        <xpath expr="//tr[@t-as='line']/td[@name='move_line_aggregated_qty_ordered']" position="attributes">
+            <attribute name="t-if">o.picking_type_id.report_display_ordered_qty</attribute>
+        </xpath>
+    </template>
+
+
+
+
+</odoo>
